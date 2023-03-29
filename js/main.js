@@ -25,3 +25,8 @@ btnAgregar.addEventListener("click", function (event) {
     txtNumber.style.border = "";
   }
 });
+
+txtNumber.addEventListener("", function (event) {
+  event.preventDefault();
+  txtNumber.value = txtNumber.value.trim();
+});
