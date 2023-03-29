@@ -13,6 +13,9 @@ btnClear.addEventListener("click", function (event) {
 //
 btnAgregar.addEventListener("click", function (event) {
   event.preventDefault();
+  alertValidacionesTexto.innHTML = "";
+  alertValidaciones.style.display = "none";
+
   txtNombre.value = txtNombre.value.trim();
   if (txtNombre.value.length == 0) {
     txtNombre.style.border = "solid thin reds";
