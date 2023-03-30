@@ -25,6 +25,17 @@ btnClear.addEventListener("click", function (event) {
   event.preventDefault();
   txtNombre.value = "";
   txtNumber.value = "";
+
+  contador = 0;
+  totalEnProductos = 0;
+  costoTotal = 0;
+  contadorProductos.innerText = "0";
+  productosTotal.innerText = "0";
+  precioTotal.innerText = "$ 0";
+
+  localStorage.setItem("contadorProductos", contador);
+  localStorage.setItem("totalEnProductos", totalEnProductos);
+  localStorage.setItem("constoTotal", costoTotal.toFixed(2));
 });
 
 function validarCantidad() {
@@ -84,10 +95,15 @@ btnAgregar.addEventListener("click", function (event) {
                    <td>${txtNumber.value}</td>
                    <td>${Precio}</td>
            </tr>`;
+    cuerpoTabla[0].insertAdjacentHTML("beforeend", row);
     contadorProductos.innerText = contador;
     totalEnProductos += parseFloat(txtNumber.value);
     productosTotal.innerText = totalEnProductos;
-    cuerpoTabla[0].insertAdjacentHTML("beforeend", row);
+    costoTotal += Precio * perseFloat(txtNumber.value);
+    precioTotal.innerText = `$ ${costoTotal.toFixed(2)}`;
+    localStorage.setItem("contadorProductos", contador);
+    localStorage.setItem("totalEnProductos", totalEnProductos);
+    localStorage.setItem("constoTotal", costoTotal.toFixed(2));
     txtNombre.value = "";
     txtNumber.value = "";
     txtNombre.focus = "";
