@@ -101,14 +101,18 @@ btnAgregar.addEventListener("click", function (event) {
     contadorProductos.innerText = contador;
     totalEnProductos += parseFloat(txtNumber.value);
     productosTotal.innerText = totalEnProductos;
-    costoTotal += Precio * perseFloat(txtNumber.value);
+    costoTotal += Precio * parseFloat(txtNumber.value);
     precioTotal.innerText = `$ ${costoTotal.toFixed(2)}`;
-    localStorage.setItem("contadorProductos", contador);
-    localStorage.setItem("totalEnProductos", totalEnProductos);
-    localStorage.setItem("constoTotal", costoTotal);
+    let resumen = `{"contadorProductos": ${contador},
+                  "totalProductos"    : ${totalEnProductos},
+                   "costoTotal"       : ${costoTotal.toFixed(2)} }`;
+    localStorage.setItem("resumen", resumen);
+    //localStorage.setItem("contadorProductos", contador);
+    //localStorage.setItem("totalEnProductos", totalEnProductos);
+    //localStorage.setItem("constoTotal", costoTotal);
     txtNombre.value = "";
     txtNumber.value = "";
-    txtNombre.focus = "";
+    txtNombre.focus();
   } // el if de isValid
 }); // aqui acaba el btnAgregar click
 //btnAgregar
@@ -123,16 +127,13 @@ txtNombre.addEventListener("blur", function (event) {
 }); // txtNombre.blur
 
 window.addEventListener("load", function (event) {
-  if (localStorage.getItem("contadorProdcutos") == null);
-  {
+  if (localStorage.getItem("contadorProdcutos") == null) {
     localStorage.getItem("contadorProdcutos"), "0";
   }
-  if (localStorage.getItem("totalEnProductos") == null);
-  {
+  if (localStorage.getItem("totalEnProductos") == null) {
     localStorage.getItem("totalEnProductos"), "0";
   }
-  if (localStorage.getItem("costoTotal") == null);
-  {
+  if (localStorage.getItem("costoTotal") == null) {
     localStorage.getItem("costoTotal", "0.0");
   }
 
